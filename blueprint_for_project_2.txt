@@ -1,0 +1,75 @@
+
+
+SummoningRitual: (superclass)
+	id
+	
+	different types of ritual: (subclass)
+		-name
+		-costs {resource: cost}
+		+perform(inventroy): Undead
+		+check_requirements
+
+Necromancer:
+	-id
+	-name
+	-level
+	-inventory = create_inventory()
+	-undeads[]
+	+revive()
+	+dead()
+	+level_up
+	+perform_ritual(ritual: SummoningRitual)
+	
+
+inventory: (part of Necromancer)
+	-item types [item]
+	+spend(item, quantity)
+	+fill(item, quantity)
+	+get_item_quantity(item)
+
+	
+MagicalResources(super class):
+id
+-necrotic_runes: int
+-spirit_runes: int
+-bone_runes: int
+-flesh_runes: int
+-ectoplasm: int
+
++add_necrotic_rune_quantity()
++add_spirit_rune_quantity()
++add_bone_rune_quantity()
++add_flesh_rune_quantity()
++add_ectoplasm_quantity()
++remove_necrotic_rune_quantity()
++remove_spirit_rune_quantity()
++remove_bone_rune_quantity()
++remove_flesh_rune_quantity()
++remove_ectoplasm_quantity()
+
++get_quantity()
+	Ectoplasm(sub class):
+		name
+
+	Rune(subclass of Magical resources, Superclass of Runes):
+		Necrotic (subclass):
+			name
+		Spirit (subclass):
+			name
+		Bone (subclass):
+			name
+		Flesh (subclass):
+			name
+
+Undead (superclass):
+	__initial level = 1
+	__undead_ID
+	__level
+	+born()
+	+dead()
+	+level_up
+	hp
+	four types of undead (subclass):
+		-own starting health
+		-own starting power
+
